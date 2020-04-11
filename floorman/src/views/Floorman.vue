@@ -1,10 +1,10 @@
 <template>
   <div id="floorman">
-    This is the home page
-    <b-button lg="4" variant="outline-primary" href="/setup">
+    <b-button class="setup-button" variant="outline-light" href="/setup">
       Setup
     </b-button>
-    <b-button variant="primary">
+    <br>
+    <b-button class="reset-button" variant="warning">
       Preset
     </b-button>
   </div>
@@ -18,5 +18,12 @@ export default class Floorman extends Vue {
 </script>
 
 <style lang="scss">
-
+  #floorman{
+    background-color: darkgreen;
+    height: vh;
+    min-height: 100%;
+  }
+  .setup-button{
+    padding: 8px;
+  }
 </style>

@@ -1,8 +1,16 @@
 <template>
   <div id="setup-form">
-    <div id = "chip-form">
+    <div id="chips-form">
       <div v-for="(chip, index) in chips" :key="index">
-        hi
+        <div id="chip-form">
+          <div class="color-input">
+
+          </div>
+          <div class="amount-input">
+            <label>Amount: </label>
+            <b-form-input type="number" />
+          </div>
+        </div>
       </div>
       <b-button varient="primary" @click="addChip">
         Add Chip
@@ -16,9 +24,9 @@
 
     <div id="form-speed">
       <b-form-group label="Choose game speed: ">
-        <b-form-radio v-model="selected" name="blitz" value=10>Blitz</b-form-radio>
-        <b-form-radio v-model="selected" name="blitz" value=15>Normal</b-form-radio>
-        <b-form-radio v-model="selected" name="blitz" value=25>Long</b-form-radio>
+        <b-form-radio v-model="radio" name="blitz" value=10>Blitz</b-form-radio>
+        <b-form-radio v-model="radio" name="blitz" value=15>Normal</b-form-radio>
+        <b-form-radio v-model="radio" name="blitz" value=25>Long</b-form-radio>
       </b-form-group>
     </div>
   </div>

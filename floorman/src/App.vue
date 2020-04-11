@@ -13,6 +13,12 @@
   color: #2c3e50;
 }
 
+body{
+  min-height: 100vh;
+  height: 100%;
+  background-color:darkgreen !important;
+}
+
 #nav {
   padding: 30px;
 
