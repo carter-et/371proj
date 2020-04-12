@@ -1,43 +1,59 @@
 <template>
-  <div id="setup-form">
-    <div id="chips-form">
-      <div v-for="(chip, index) in chips" :key="index">
-        <div id="chip-form">
-          <div class="color-input">
+  <div id="setup-form" class="container-md">
+    <div class="row">
+      <div class="col-md">
+        <div id="chips-form">
 
-          </div>
-          <div class="amount-input">
-            <label>Amount: </label>
-            <b-form-input type="number" />
-          </div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Color</th>
+                <th scope="col">Quantity</th>
+                <!-- This last one is where we can choose to remove it if we don't like it -->
+                <th scope="col"> </th> 
+              </tr>
+            </thead>
+            <tbody>
+              <!-- For every chip in the array, make a row to display it -->
+                <chipFormRow v-for="(chip, index) in chips" :key="index" :index="index"></chipFormRow>
+              <!-- Always keep a row at the bottom to add a new chip -->
+              <tr>
+                <b-button variant="primary" @click="addChip">
+                  Add Chip
+                </b-button>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
-      <b-button varient="primary" @click="addChip">
-        Add Chip
-      </b-button>
-    </div>
+      <div class="col-md">
+        <div id="form-players">
+          <b-form-select v-model="players" :options="options"></b-form-select>
+        <div class="mt-3">Players: <strong>{{ players }}</strong></div>
+        </div>
 
-    <div id="form-players">
-      <b-form-select v-model="selected" :options="options"></b-form-select>
-    <div class="mt-3">Players: <strong>{{ selected }}</strong></div>
-    </div>
-
-    <div id="form-speed">
-      <b-form-group label="Choose game speed: ">
-        <b-form-radio v-model="radio" name="blitz" value=10>Blitz</b-form-radio>
-        <b-form-radio v-model="radio" name="blitz" value=15>Normal</b-form-radio>
-        <b-form-radio v-model="radio" name="blitz" value=25>Long</b-form-radio>
-      </b-form-group>
+        <div id="form-speed">
+          <b-form-group label="Choose game speed: ">
+            <b-form-radio v-model="timePerPerson" name="blitz" value=10>Blitz</b-form-radio>
+            <b-form-radio v-model="timePerPerson" name="blitz" value=15>Normal</b-form-radio>
+            <b-form-radio v-model="timePerPerson" name="blitz" value=25>Long</b-form-radio>
+          </b-form-group>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop } from 'vue-property-decorator'
-import Chip from '../types/chips'
-@Component
+import { Component, Vue, Prop } from 'vue-property-decorator';
+import Chip from '../types/chips';
+import chipFormRow from '../components/chipFormRow.vue';
+@Component({
+  components: {
+    chipFormRow,
+  }
+})
 export default class SetupForm extends Vue {
-  private selected: number = 2;
   private options = [
     {value: 2, text: "2"},
     {value: 3, text: "3"},
@@ -47,15 +63,33 @@ export default class SetupForm extends Vue {
     {value: 7, text: "7"},
     {value: 8, text: "8"},
   ];
-  private chips: Chip[] = [];
+
   private addChip(){
-    let emptyChip = {
-      color: null,
-      amount: 0,
-      value: 0
-    }
-    this.chips.push(emptyChip)
+    this.$store.commit("addChip");
   }
+  
+
+  // GETTERS AND SETTERS
+  get players(): number {
+    return this.$store.state.players;
+  }
+
+  set players(value) {
+    this.$store.commit("players", value);
+  }
+
+  get timePerPerson(): number {
+    return this.$store.state.timePerPerson;
+  }
+
+  set timePerPerson(value) {
+    this.$store.commit("timePerPerson", value);
+  }
+
+  get chips(): Chip[] {
+    return this.$store.state.chips;
+  }
+
 }
 
 </script>
