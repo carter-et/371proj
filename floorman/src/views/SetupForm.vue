@@ -10,19 +10,17 @@
                 <th scope="col">Color</th>
                 <th scope="col">Quantity</th>
                 <!-- This last one is where we can choose to remove it if we don't like it -->
-                <th scope="col"> </th> 
+                <th scope="col"> </th>
               </tr>
             </thead>
             <tbody>
               <!-- For every chip in the array, make a row to display it -->
                 <chipFormRow v-for="(chip, index) in chips" :key="index" :index="index"></chipFormRow>
               <!-- Always keep a row at the bottom to add a new chip -->
-              <tr>
-                <b-button variant="primary" @click="addChip">
-                  Add Chip
-                </b-button>
-              </tr>
             </tbody>
+            <b-button pill block variant="primary" @click="addChip">
+              <img src="../../public/assets/plus.png" style="height: 30px; width: 30px; filter: invert(100%)">
+            </b-button>
           </table>
         </div>
       </div>
@@ -67,7 +65,7 @@ export default class SetupForm extends Vue {
   private addChip(){
     this.$store.commit("addChip");
   }
-  
+
 
   // GETTERS AND SETTERS
   get players(): number {
