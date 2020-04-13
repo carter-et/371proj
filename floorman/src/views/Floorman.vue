@@ -1,11 +1,13 @@
 <template>
   <div id="floorman">
+    <br>
     <b-button class="setup-button" variant="outline-light" href="/setup">
-      Setup
+      <h1>Setup</h1>
     </b-button>
     <br>
-    <b-button class="reset-button" variant="warning">
-      Preset
+    <br>
+    <b-button class="reset-button" variant="warning" href="/info">
+      <h2>Preset</h2>
     </b-button>
   </div>
 </template>

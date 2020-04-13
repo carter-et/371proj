@@ -41,6 +41,8 @@ export default class chipFormRow extends Vue{
       {color: "Blue", link: "blue-chip.png"}
     ]
 
+    private chipColor: String = this.chipOptions[this.chipOption].color;
+
     private removeChip(){
         this.$store.commit("removeChip", this.index);
     }

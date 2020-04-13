@@ -15,7 +15,7 @@
                     </b-button>
                 </b-navbar-nav>
 
-                <b-navbar-brand class="ml-auto" align-v="center">
+                <b-navbar-brand class="ml-auto" align-v="center" href="/">
                     Floorman
                 </b-navbar-brand>
 

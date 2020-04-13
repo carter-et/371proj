@@ -4,13 +4,14 @@
       <b-col>
         <b-container>
           <div id="chips-form">
+            <br>
             <table class="table">
               <thead>
                 <tr>
                   <th>Color</th>
                   <th>Quantity</th>
                   <!-- This last one is where we can choose to remove it if we don't like it -->
-                  <th> </th>
+                  <th><div></div></th>
                 </tr>
               </thead>
               <tbody>
@@ -18,8 +19,11 @@
                 <chipFormRow v-for="(chip, index) in chips" :key="chip" :index="index"></chipFormRow>
                 <!-- Always keep a row at the bottom to add a new chip -->
               </tbody>
+              <br>
               <b-button pill block variant="primary" @click="addChip">
-                <img src="../../public/assets/plus.png" style="height: 30px; width: 30px; filter: invert(100%)">
+                <template>
+                  <b-icon icon="plus-circle"></b-icon>
+                </template>
               </b-button>
             </table>
           </div>
@@ -28,10 +32,10 @@
       <b-col>
         <b-container>
           <div id="form-players">
+            <div class="mt-3">Players: <strong>{{ players }}</strong></div>
             <b-form-select v-model="players" :options="options"></b-form-select>
-          <div class="mt-3">Players: <strong>{{ players }}</strong></div>
           </div>
-
+          <br>
           <div id="form-speed">
             <b-form-group label="Choose game speed: ">
               <b-form-radio v-model="timePerPerson" name="blitz" value=10>Blitz</b-form-radio>
@@ -47,7 +51,7 @@
 
       </b-col>
       <b-col align-v="end">
-        <b-button class="float-sm-right" pill variant="warning">Next</b-button>
+        <b-button class="float-sm-right" pill variant="warning" href="/info">Next</b-button>
       </b-col>
     </b-row>
   </div>
@@ -57,7 +61,6 @@
 import { Component, Vue, Prop } from 'vue-property-decorator';
 import Chip from '../types/chips';
 import chipFormRow from '../components/chipFormRow.vue';
-import fmNav from '../components/navbar.vue';
 @Component({
   components: {
     chipFormRow,
@@ -76,6 +79,10 @@ export default class SetupForm extends Vue {
 
   private addChip(){
     this.$store.commit("addChip");
+  }
+
+  private updateChips(){
+    
   }
 
   // GETTERS AND SETTERS

@@ -30,9 +30,10 @@ export default new Vuex.Store({
       state.timePerPerson = value;
       console.log("tPP: " + value);
     },
-    updateChips: (state, updated) => {
-      state.chips = updated;
-    },
+    updateChip: (state, {index, color, amount}) => {
+      state.chips[index].color = color;
+      state.chips[index].amount = amount;
+    }
   },
   actions: {
   },
