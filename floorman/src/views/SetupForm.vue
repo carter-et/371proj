@@ -16,7 +16,7 @@
               </thead>
               <tbody>
                 <!-- For every chip in the array, make a row to display it -->
-                <chipFormRow v-for="(chip, index) in chips" :key="chip" :index="index"></chipFormRow>
+                <chipFormRow v-for="(chip, index) in chips" :key="chip.id" :index="index"></chipFormRow>
                 <!-- Always keep a row at the bottom to add a new chip -->
               </tbody>
               <br>

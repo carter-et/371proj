@@ -41,28 +41,30 @@
         </b-col>
       </b-row>
       <b-row id="blind-info">
-        <b-row id="blind-titles">
-          <b-col>
-            <h2>Prev sb/Bb</h2>
-          </b-col>
-          <b-col>
-            <h1>sb/Bb</h1>
-          </b-col>
-          <b-col>
-            <h2>Next sb/Bb</h2>
-          </b-col>
-        </b-row>
-        <b-row id="blind-values">
-          <b-col>
-            <h2></h2>
-          </b-col>
-          <b-col>
-            <h1>1/2</h1>
-          </b-col>
-          <b-col>
-            <h2>2/4</h2>
-          </b-col>
-        </b-row>
+        <b-col>
+          <b-row id="blind-titles">
+            <b-col>
+              <h2>Prev sb/Bb</h2>
+            </b-col>
+            <b-col>
+              <h1>sb/Bb</h1>
+            </b-col>
+            <b-col>
+              <h2>Next sb/Bb</h2>
+            </b-col>
+          </b-row>
+          <b-row id="blind-values">
+            <b-col>
+              <h2></h2>
+            </b-col>
+            <b-col>
+              <h1>1/2</h1>
+            </b-col>
+            <b-col>
+              <h2>2/4</h2>
+            </b-col>
+          </b-row>
+        </b-col>
       </b-row>
     </b-container>
   </div>

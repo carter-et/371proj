@@ -16,11 +16,24 @@ export default new Vuex.Store({
       console.log("players: " + value);
     },
     addChip: (state) => {
+      //this is the default id.
+      let newID: number = state.chips.length + 1;
+
+      state.chips.forEach((chip) => {
+        if(newID === chip.id){
+          newID += chip.id;
+        }
+      });
+
       let emptyChip = {
         color: null,
         amount: 0,
-        value: 0
+        value: 0,
+        id: 0
       }
+
+      emptyChip.id = newID;
+
       state.chips.push(emptyChip)
     }, 
     removeChip: (state, index) => {
