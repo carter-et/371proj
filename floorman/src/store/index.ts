@@ -1,8 +1,14 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import VuexPersist from 'vuex-persist'
 import Chip from '@/types/chips';
 
 Vue.use(Vuex)
+
+const vuexLocalStorage = new VuexPersist({
+  key: 'vuex',
+  storage: window.localStorage
+})
 
 export default new Vuex.Store({
   state: {
@@ -26,7 +32,7 @@ export default new Vuex.Store({
       });
 
       let emptyChip = {
-        color: null,
+        color: "red",
         amount: 0,
         value: 0,
         id: 0
@@ -43,13 +49,20 @@ export default new Vuex.Store({
       state.timePerPerson = value;
       console.log("tPP: " + value);
     },
-    updateChip: (state, {index, color, amount}) => {
-      state.chips[index].color = color;
-      state.chips[index].amount = amount;
+    updateChip: (state, {id, color, amount}) => {
+      console.log('trying to update: ' + id)
+
+      state.chips.forEach((chip) => {
+        if(chip.id === id){
+          chip.color = color;
+          chip.amount = amount;
+        }
+      });
     }
   },
   actions: {
   },
   modules: {
-  }
+  },
+  plugins: [vuexLocalStorage.plugin]
 })

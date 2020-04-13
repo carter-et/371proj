@@ -16,7 +16,7 @@
               </thead>
               <tbody>
                 <!-- For every chip in the array, make a row to display it -->
-                <chipFormRow v-for="(chip, index) in chips" :key="chip.id" :index="index"></chipFormRow>
+                <chipFormRow v-for="(chip, index) in chips" :key="chip.id" :index="index" :cId="chip.id"></chipFormRow>
                 <!-- Always keep a row at the bottom to add a new chip -->
               </tbody>
               <br>
@@ -91,6 +91,7 @@ export default class SetupForm extends Vue {
   }
 
   set players(value) {
+    console.log('Setting players to: ', value)
     this.$store.commit("players", value);
   }
 
@@ -106,7 +107,6 @@ export default class SetupForm extends Vue {
     console.log(this.$store.state.chips);
     return this.$store.state.chips;
   }
-
 }
 
 </script>
