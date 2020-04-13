@@ -1,8 +1,22 @@
 <template>
   <div id="app">
+    <fmNav/>
     <router-view/>
   </div>
 </template>
+
+<script lang="ts">
+import { Component, Vue, Prop } from 'vue-property-decorator';
+import fmNav from './components/navbar.vue';
+@Component({
+  components: {
+    fmNav
+  }
+})
+export default class App extends Vue {
+
+}
+</script>
 
 <style lang="scss">
 #app {
