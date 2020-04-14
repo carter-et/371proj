@@ -19,7 +19,7 @@
         <!-- Possibly abstract this out with the whole component? -->
         <td>
             <div class="amount-input">
-                <b-form-input type="number" />
+                <b-form-input type="number" v-model="amount"/>
             </div>
         </td>
         <td>
@@ -39,6 +39,7 @@ export default class chipFormRow extends Vue{
     @Prop() private cId!: number;
     @Prop() private index!: number;
 
+    //default value set to 0
     private amount: number = 0;
 
     private chipOptions: any[] = [
@@ -78,11 +79,13 @@ export default class chipFormRow extends Vue{
         const tempChip = this.$store.state.chips.find((chip: Chip) => (this.cId === chip.id));
         if(!!tempChip){
             this.chipColor = tempChip.color;
+            this.amount = tempChip.amount;
         }
 
         if(this.chipColor === undefined){
-            console.log('Could not find a matching chip')
-            this.chipColor = this.chipOptions[0].color
+            console.log('Could not find a matching chip');
+            this.chipColor = this.chipOptions[0].color;
+            this.amount = 0;
         }
     }
 }

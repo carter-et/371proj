@@ -2,9 +2,8 @@
   <div id="game-page">
     <b-container id="game-page-body">
       <b-row id="chip-display">
-        Chips will be diplayed here
         <b-col v-for="(chip, index) in chips" :key="index" :index="index">
-          <img src="../../public/assets/red-chip.png" height="30px" width="30px">
+          <img src="../../public/assets/red-chip.png" height="120px" width="120px">
         </b-col>
       </b-row>
       <b-row id="time-display">
