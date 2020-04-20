@@ -24,7 +24,7 @@
         </td>
         <td>
             <b-button-group>
-                <b-button variant="primary" @click="saveChip()">Save</b-button>
+                <b-button variant="success" @click="saveChip()">Save</b-button>
                 <b-button variant="danger" @click="removeChip()">Remove</b-button>
             </b-button-group>
         </td>
@@ -44,7 +44,17 @@ export default class chipFormRow extends Vue{
 
     private chipOptions: any[] = [
       {color: "red", text: "Red", link: "red-chip.png"},
-      {color: "blue", text: "Blue", link: "blue-chip.png"}
+      {color: "blue", text: "Blue", link: "blue-chip.png"},
+      {color: "black", text: "Black", link: "black-chip.png"},
+      {color: "white", text: "White", link: "white-chip.png"},
+      {color: "green", text: "Green", link: "green-chip.png"},
+      {color: "cyan", text: "Cyan", link: "cyan-chip.png"},
+      {color: "grey", text: "Grey", link: "grey-chip.png"},
+      {color: "brown", text: "Brown", link: "brown-chip.png"},
+      {color: "orange", text: "Orange", link: "orange-chip.png"},
+      {color: "purple", text: "Purple", link: "purple-chip.png"},
+      {color: "pink", text: "Pink", link: "pink-chip.png"},
+      {color: "yellow", text: "Yellow", link: "yellow-chip.png"}
     ]
 
     //defaults tp 'red'

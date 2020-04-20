@@ -7,7 +7,7 @@
 
             <b-collapse id="nav-collapse" is-nav>
                 <b-navbar-nav>
-                    <b-button>
+                    <b-button @click="$router.go(-1)">
                         <template>
                             <b-icon icon="box-arrow-in-left"></b-icon>
                         </template>

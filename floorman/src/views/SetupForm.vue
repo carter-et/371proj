@@ -1,59 +1,62 @@
 <template>
   <div id="setup-form" class="container-md">
-    <b-row>
-      <b-col>
-        <b-container>
-          <div id="chips-form">
-            <br>
-            <table class="table">
-              <thead>
-                <tr>
-                  <th>Color</th>
-                  <th>Quantity</th>
-                  <!-- This last one is where we can choose to remove it if we don't like it -->
-                  <th><div></div></th>
-                </tr>
-              </thead>
-              <tbody>
-                <!-- For every chip in the array, make a row to display it -->
-                <chipFormRow v-for="(chip, index) in chips" :key="chip.id" :index="index" :cId="chip.id"></chipFormRow>
-                <!-- Always keep a row at the bottom to add a new chip -->
-              </tbody>
+    <br>
+    <b-jumbotron header="Setup">
+      <b-row>
+        <b-col>
+          <b-container>
+            <div id="chips-form">
               <br>
-              <b-button pill block variant="primary" @click="addChip">
-                <template>
-                  <b-icon icon="plus-circle"></b-icon>
-                </template>
-              </b-button>
-            </table>
-          </div>
-        </b-container>
-      </b-col>
-      <b-col>
-        <b-container>
-          <div id="form-players">
-            <div class="mt-3">Players: <strong>{{ players }}</strong></div>
-            <b-form-select v-model="players" :options="options"></b-form-select>
-          </div>
-          <br>
-          <div id="form-speed">
-            <b-form-group label="Choose game speed: ">
-              <b-form-radio v-model="timePerPerson" name="blitz" value=10>Blitz</b-form-radio>
-              <b-form-radio v-model="timePerPerson" name="blitz" value=15>Normal</b-form-radio>
-              <b-form-radio v-model="timePerPerson" name="blitz" value=25>Long</b-form-radio>
-            </b-form-group>
-          </div>
-        </b-container>
-      </b-col>
-    </b-row>
-    <b-row>
-      <b-col>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Color</th>
+                    <th>Quantity</th>
+                    <!-- This last one is where we can choose to remove it if we don't like it -->
+                    <th><div></div></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- For every chip in the array, make a row to display it -->
+                  <chipFormRow v-for="(chip, index) in chips" :key="chip.id" :index="index" :cId="chip.id"></chipFormRow>
+                  <!-- Always keep a row at the bottom to add a new chip -->
+                </tbody>
+              </table>
+              <br>
+                <b-button pill block variant="primary" @click="addChip">
+                  <template>
+                    <b-icon icon="plus-circle"></b-icon>
+                  </template>
+                </b-button>
+            </div>
+          </b-container>
+        </b-col>
+        <b-col>
+          <b-container>
+            <div id="form-players">
+              <div class="mt-3">Players: <strong>{{ players }}</strong></div>
+              <b-form-select v-model="players" :options="options"></b-form-select>
+            </div>
+            <br>
+            <div id="form-speed">
+              <b-form-group label="Choose game speed: ">
+                <b-form-radio v-model="timePerPerson" name="blitz" value=10>Blitz</b-form-radio>
+                <b-form-radio v-model="timePerPerson" name="blitz" value=15>Normal</b-form-radio>
+                <b-form-radio v-model="timePerPerson" name="blitz" value=25>Long</b-form-radio>
+              </b-form-group>
+            </div>
+          </b-container>
+        </b-col>
+      </b-row>
+      <b-row>
+        <b-col>
 
-      </b-col>
-      <b-col align-v="end">
-        <b-button class="float-sm-right" pill variant="warning" href="/info">Next</b-button>
-      </b-col>
-    </b-row>
+        </b-col>
+        <b-col align-v="end">
+          <b-button class="float-sm-right" pill variant="warning" href="/info">Next</b-button>
+        </b-col>
+      </b-row>
+    </b-jumbotron>
   </div>
 </template>
 

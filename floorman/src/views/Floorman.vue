@@ -21,7 +21,7 @@ export default class Floorman extends Vue {
 
 <style lang="scss">
   #floorman{
-    background-color: darkgreen;
+    
     height: vh;
     min-height: 100%;
   }
