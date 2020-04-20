@@ -46,6 +46,7 @@ export default class chipFormRow extends Vue{
       {color: "red", text: "Red", link: "red-chip.png"},
       {color: "blue", text: "Blue", link: "blue-chip.png"},
       {color: "black", text: "Black", link: "black-chip.png"},
+      {color: "white2", text: "White", link: "white2-chip.png"},
       {color: "white", text: "White", link: "white-chip.png"},
       {color: "green", text: "Green", link: "green-chip.png"},
       {color: "cyan", text: "Cyan", link: "cyan-chip.png"},

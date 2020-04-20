@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import VuexPersist from 'vuex-persist'
 import Chip from '@/types/chips';
+import Stick from '@/types/stick';
 
 Vue.use(Vuex)
 
@@ -14,7 +15,7 @@ export default new Vuex.Store({
   state: {
     players: 2,
     chips: [] as Chip[],
-    timePerPerson: 15
+    timePerPerson: 15,
   },
   mutations: {
     players: (state, value) => {
@@ -56,6 +57,13 @@ export default new Vuex.Store({
         if(chip.id === id){
           chip.color = color;
           chip.amount = amount;
+        }
+      });
+    },
+    updateChipValue: (state, {color, value}) => {
+      state.chips.forEach(chip => {
+        if(chip.color === color){
+          chip.value = value;
         }
       });
     }

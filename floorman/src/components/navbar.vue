@@ -1,10 +1,7 @@
 <template>
     <div>
         <b-navbar toggleable="lg" type="dark" variant="dark">
-            
-
             <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-
             <b-collapse id="nav-collapse" is-nav>
                 <b-navbar-nav>
                     <b-button @click="$router.go(-1)">
@@ -21,15 +18,17 @@
 
                 <!-- Right aligned nav items -->
                 <b-navbar-nav class="ml-auto">
-                    <b-button>
+                    <b-button v-b-modal.rules>
                         Rules and Info
-                        <template>
-                            <b-icon icon="book"></b-icon>
-                        </template>
+                        <b-icon icon="book"></b-icon>
                     </b-button>
                 </b-navbar-nav>
             </b-collapse>
         </b-navbar>
+
+        <b-modal id="rules" title="Rules and Info">
+            <h2>Rules</h2>
+        </b-modal>
     </div>
 </template>
 

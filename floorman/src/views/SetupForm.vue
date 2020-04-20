@@ -23,10 +23,9 @@
                 </tbody>
               </table>
               <br>
-                <b-button pill block variant="primary" @click="addChip">
-                  <template>
-                    <b-icon icon="plus-circle"></b-icon>
-                  </template>
+                <b-button block variant="outline-primary" @click="addChip">
+                  <b-icon icon="plus"></b-icon>
+                  New Chip
                 </b-button>
             </div>
           </b-container>
@@ -53,7 +52,10 @@
 
         </b-col>
         <b-col align-v="end">
-          <b-button class="float-sm-right" pill variant="warning" href="/info">Next</b-button>
+          <b-button class="float-right" variant="primary" href="/info">
+              Next  
+              <b-icon icon="box-arrow-in-right"></b-icon>
+          </b-button>
         </b-col>
       </b-row>
     </b-jumbotron>
@@ -82,10 +84,6 @@ export default class SetupForm extends Vue {
 
   private addChip(){
     this.$store.commit("addChip");
-  }
-
-  private updateChips(){
-    
   }
 
   // GETTERS AND SETTERS

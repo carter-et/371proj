@@ -9,10 +9,13 @@
             <img :src="getImgUrl(chip.color + '-chip.png')" height="150px" width="150px">
           </b-col>
         </b-row>
+        <br>
 
         <b-row id="time-display">
           <b-col>
-          <h1>{{minutes}} : {{seconds}}</h1>
+            <b-jumbotron  border-variant="danger">
+              <h1> {{minutes}} : {{seconds}}</h1>
+            </b-jumbotron>
           </b-col>
         </b-row>
 
@@ -34,7 +37,7 @@
                   <b-icon icon="pause-fill"></b-icon>
                 </template>              
               </b-button>
-              <b-button variant="warning">
+              <b-button variant="warning" >
                 <template>
                   <b-icon icon="play"></b-icon>
                 </template>              
@@ -95,6 +98,34 @@ import Chip from '../types/chips';
 @Component
 export default class GamePage extends Vue {
 
+
+  private startTime: any = new Date();
+
+  private hours: any = "0";
+  private minutes: any = this.addZero("15");
+  private seconds: any = this.addZero("0");
+
+  private  addZero(i: String) {
+    if(!!i){
+      let num: Number = Number(i);
+
+      if (num < 10) {
+        i = "0" + i;
+      }
+      return i;
+      }
+  }
+
+  private startClick(){
+    this.startTime = new Date(); //this grabs the current time when start is clicked
+    //do something for the timer? idk
+    let startHours = this.addZero(this.startTime.getHours());
+    let startMinutes = this.addZero(this.startTime.getMinutes());
+    let startSeconds = this.addZero(this.startTime.getSeconds());
+  }
+
+  
+
   private getImgUrl(pic: String) {
     // This is super sketch.
     return require('../../public/assets/' + pic)
@@ -104,12 +135,6 @@ export default class GamePage extends Vue {
     console.log(this.$store.state.chips);
     return this.$store.state.chips;
   }
-
-  private minutes: Number = 15;
-  private seconds: Number = 0;
-
-  private currTime: any = new Date().getTime();
-
 }
 </script>
 
