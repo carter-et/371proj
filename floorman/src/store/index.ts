@@ -60,7 +60,7 @@ export default new Vuex.Store({
         }
       });
     },
-    setState(state, newState: any){
+    setState(state, newState){
       state.players = newState.players;
       state.chips = newState.chips;
       state.timePerPerson = newState.timePerPerson;

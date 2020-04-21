@@ -180,7 +180,8 @@ export default class GamePage extends Vue {
   private nextGameState(){
     this.gameState++;
     console.log("gamestate", this.gameState);
-    //reset clock
+    this.resetClick();
+    
   }
 
   private prevGameState(){
@@ -190,7 +191,8 @@ export default class GamePage extends Vue {
     else{
       this.gameState--;
       console.log("gamestate", this.gameState);
-      //reset clock
+      this.resetClick();
+      
     }
   }
 
@@ -198,7 +200,7 @@ export default class GamePage extends Vue {
     if(gs < 0){
       return {sb: "", bb: ""};
     }
-    else if(gs > this.blinds.length){
+    else if(gs > this.blinds.length - 1){
       return {sb: "Game", bb: "End"};
     }
     else{

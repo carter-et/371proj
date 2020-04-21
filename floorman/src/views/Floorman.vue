@@ -26,21 +26,32 @@
         </b-row>
       </b-jumbotron>
       <b-modal id="presets" title="Popular Presets">
-      <table>
-        <thead>
-          <tr>
-            <th>Colors</th>
-            <th>Total Chips</th>
-            <th>Players</th>
-            <th>Speed</th>
-          </tr>
-        </thead>
-        <tbody>
-        </tbody>
-        json test:
-        {{ json }}
-      </table>
-    </b-modal>
+        <b-row>
+          <b-col>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Total Chips</th>
+                  <th>Players</th>
+                  <th>Speed</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody v-if="!!serverData">
+                <tr v-for="(state, index) in serverData" :key="index" :index="index">
+                  <td>{{ getTotalChips(state.chips) }}</td>
+                  <td>{{ state.players }}</td>
+                  <td>{{ state.timePerPerson }}</td>
+                  <td><b-button variant = "primary" @click="choose(index)" href="/setup">Choose</b-button></td>
+                </tr>
+              </tbody>
+              <tbody v-else>
+                Loading data...
+              </tbody>
+            </table>
+          </b-col>
+        </b-row>
+      </b-modal>
     </b-container>
   </div>
 </template>
@@ -48,25 +59,48 @@
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator'
 import axios from 'axios'
+import Chip from '../types/chips'
 @Component
 export default class Floorman extends Vue {
-  private json: any;
+  private serverData: any = null;
   private url: string = "http://localhost:5000/";
+
+  private choose(index: number){
+    console.log("Setting current set to preset: ", index);
+    this.$store.commit("setState", this.serverData[index]);
+  }
+
+  private getTotalChips(chips: Chip[]){
+    let total = 0;
+    chips.forEach((chip) => {
+      total += Number(chip.amount);
+    })
+    return total;
+  }
 
   private getAPI(){
     axios
       .get(this.url).then(response => {
         console.log("response: ", response)
-        this.json = response.data;
+        this.setServerData(response.data);
       });
+  }
+
+  private setServerData(json: any){
+    this.serverData = json;
+    console.log("Setting server data...", this.serverData)
   }
 
   private mounted(){
     this.getAPI();
-    console.log("data: ", this.json)
+    console.log("Startup data: ", this.serverData)
   }
 }
 </script>
 
 <style lang="scss">
+  th{
+    padding: 5px;
+    margin: 5px;
+  }
 </style>
