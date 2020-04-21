@@ -5,21 +5,13 @@
       <br>
       <b-jumbotron header="Floorman">
         <br>
-        <b-row>
-          <b-col>
-            <b-button class="setup-button" variant="primary" href="/setup">
-              <h1>Setup</h1>
-            </b-button>
-          </b-col>
-        </b-row>
-        <br>
-        <b-row>
-          <b-col>
-            <b-button class="reset-button" variant="outline-primary" href="/info">
-              <h1>Preset</h1>
-            </b-button>
-          </b-col>
-        </b-row>
+        <b-button class="setup-button" variant="primary" href="/setup">
+          <h1>Setup</h1>
+        </b-button>
+        &nbsp;
+        <b-button class="reset-button" variant="outline-primary" href="/info">
+          <h1>Preset</h1>
+        </b-button>
       </b-jumbotron>
     </b-container>
   </div>

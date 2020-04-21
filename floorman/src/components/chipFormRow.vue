@@ -24,8 +24,8 @@
         </td>
         <td>
             <b-button-group>
-                <b-button variant="success" @click="saveChip()">Save</b-button>
-                <b-button variant="danger" @click="removeChip()">Remove</b-button>
+                <b-button variant="outline-primary" @click="saveChip()"><b-icon icon="check"></b-icon></b-button>
+                <b-button variant="outline-danger" @click="removeChip()"><b-icon icon="trash"></b-icon></b-button>
             </b-button-group>
         </td>
     </tr>

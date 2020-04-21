@@ -14,10 +14,13 @@
                   <tr>
                     <th>Amount</th>
                     <th>Color</th>
-                    <b-icon class="h2 mb-2" icon="arrow-clockwise" variant="primary">icon here</b-icon>
                   </tr>
                 </thead>
                 <tbody>
+                  <tr v-for="(chip, index) in stack" :key="index" :index="index">
+                    <td><h1><b>{{chip.amount}}</b></h1></td>
+                    <td><img :src="getImgUrl(chip.color + '-chip.png')" height="150px" width="150px"></td>
+                  </tr>
                 </tbody>
               </table>
             </b-col>
@@ -58,12 +61,11 @@ import { componentsPlugin } from 'bootstrap-vue';
 })
 export default class InfoDisplay extends Vue {
   //local variables
-  private fields: any = ['amount', 'color'];
+  private stack: any[] = [];
   
   //getters and setters
   get sortedChips(): Chip[] {
-    console.log(this.$store.state.chips);
-    return this.$store.state.chips.sort((a: Chip, b: Chip) => a.amount > b.amount ? 1:-1);
+    return this.$store.state.chips.sort((a: Chip, b: Chip) => a.amount < b.amount ? 1:-1);
   }
 
   get players(): number {
@@ -73,15 +75,81 @@ export default class InfoDisplay extends Vue {
   //private methods
   private setStack(){
     //basically what this does, is it gives a value to each chip based on what the user entered before
-    let chipValues = [1, 5, 10, 50, 100, 500, 10000];
-    let stackValue = 100;
+    let chipValues: number[] = [1, 5, 10, 50, 100, 500, 1000, 5000, 10000, 50000, 100000, 500000, 1000000];
+    let stackValue: number = 100;
 
-    console.log(this.sortedChips)
+    let playerStack: number[] = [];
+    let playerValue: number[] = [];
+    let toRemove: number[] = [];
 
-    //lets add values to each chip, now that it's sorted...
-    for(let i = 0; i < this.sortedChips.length; i++){
-      this.sortedChips[i].value = chipValues[i];
+    let index: number = 0;
+    this.sortedChips.forEach((chip)=>{
+      playerStack.push(Math.floor(chip.amount / this.players));
+      playerValue.push(chipValues[index]);
+      //housekeeping
+      chip.value = chipValues[index];
+      index++;
+    });
+    console.log("Stack amounts: ", playerStack);
+    console.log("Stack values: ", playerValue);
+
+    let totalValue: number = 0;
+    for(let i = 0; i < playerStack.length; i++){
+      totalValue += playerStack[i] * playerValue[i];
     }
+    console.log("Total value: ", totalValue);
+  
+    if(totalValue < stackValue){
+      console.log("The process ends here. We can take the playerstack we have and keep it.");
+    }
+    else{
+      console.log("Time to do more fun stuff!");
+      let temp: number = 0;
+      let change: number = totalValue - 100;
+      console.log("Making change for: ", change);
+
+      //start at the end
+      for(let i = playerStack.length - 1; i > -1; i--){
+        //how many can we fit?
+        let thisValue = playerValue[i];
+        let playerHas = playerStack[i]; 
+        temp = Math.floor(change / thisValue);
+        console.log("Integer division yields: ", temp);
+        //if we want to remove than what the player has
+        if(temp > playerHas){
+          //we can only remove as many as the player has
+          toRemove.push(playerHas);
+          //update change to reflect this transaction
+          change -= thisValue * playerHas;
+        }
+        else{
+          //we should be okay to push this
+          toRemove.push(temp);
+          change = change % thisValue;
+        }
+      }
+      //we updated toRemove using the largest numbers first, 
+      //so we need to reverse it to reflect what we actually want
+      toRemove.reverse();
+      console.log("toRemove: ", toRemove);
+    }
+    for(let i = 0; i < playerStack.length; i++){
+      playerStack[i] -= toRemove[i];
+
+      let temp: any = {amount: playerStack[i], color: this.sortedChips[i].color};
+      this.stack.push(temp);
+    }
+    console.log("New stack is: ", this.stack);
+  }
+
+  private getImgUrl(pic: String) {
+    // This is super sketch.
+    return require('../../public/assets/' + pic)
+  }
+
+  //this runs on startup
+  private mounted(){
+    this.setStack();
   }
   
 }
