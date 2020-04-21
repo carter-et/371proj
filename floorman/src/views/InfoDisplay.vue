@@ -149,7 +149,9 @@ export default class InfoDisplay extends Vue {
       playerStack[i] -= toRemove[i];
 
       let temp: any = {amount: playerStack[i], color: this.sortedChips[i].color, value: chipValues[i]};
-      this.stack.push(temp);
+      if(temp.amount > 0){
+        this.stack.push(temp);
+      }
     }
     console.log("New stack is: ", this.stack);
   }
