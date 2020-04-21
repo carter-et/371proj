@@ -60,11 +60,14 @@ export default new Vuex.Store({
         }
       });
     },
-    updateChipValue: (state, {color, value}) => {
-      state.chips.forEach(chip => {
-        if(chip.color === color){
-          chip.value = value;
-        }
+    updateChipValue: (state) => {
+      let chipValues: number[] = [1, 5, 10, 50, 100, 500, 1000, 5000, 10000, 50000, 100000, 500000, 1000000];
+      let sortedChips = state.chips.sort((a: Chip, b: Chip) => a.amount < b.amount ? 1:-1);
+
+      let index: number = 0;
+      sortedChips.forEach((chip)=>{
+        chip.value = chipValues[index];
+        index++;
       });
     }
   },

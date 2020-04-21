@@ -3,16 +3,16 @@
         <td>
             <div class="color-input">
               <b-dropdown size="lg" variant="light" no-caret>
-                  <!-- This is the default image -->
-                  <template v-slot:button-content>
-                      <img :src="getImgUrl(chipOptions.find(option => option.color === chipColor).link)" height="30px" width="30px">
-                      <span class="sr-only">Search</span>
-                  </template>
-
-                  <b-dropdown-item-button v-for="(option, chipIndex) in chipOptions" :key="chipIndex">
-                    <img :src="getImgUrl(option.link)" height="30px" width="30px" @click="chooseChip(chipIndex)">
-                      {{option.text}} Chip
-                  </b-dropdown-item-button>
+                    <!-- This is the default image -->
+                    <template v-slot:button-content>
+                        <img :src="getImgUrl(chipOptions.find(option => option.color === chipColor).link)" height="30px" width="30px">
+                        <span class="sr-only">Search</span>
+                    </template>
+                        
+                    <b-dropdown-item-button v-for="(option, chipIndex) in chipOptions" :key="chipIndex">
+                        <img :src="getImgUrl(option.link)" height="30px" width="30px" @click="chooseChip(chipIndex)">
+                        {{option.text}} Chip
+                    </b-dropdown-item-button>
               </b-dropdown>
             </div>
         </td>

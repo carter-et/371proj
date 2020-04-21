@@ -19,7 +19,15 @@
                 <tbody>
                   <tr v-for="(chip, index) in stack" :key="index" :index="index">
                     <td><h1><b>{{chip.amount}}</b></h1></td>
-                    <td><img :src="getImgUrl(chip.color + '-chip.png')" height="150px" width="150px"></td>
+
+                    <td v-if="chip.color.substring(0, 5) === 'white'" class="imagebox-b">
+                      <img :src="getImgUrl(chip.color + '-chip.png')" height="150px" width="150px">
+                      <div class="centered"><h1>{{chip.value}}$</h1></div>
+                    </td>
+                    <td v-else class="imagebox">
+                      <img :src="getImgUrl(chip.color + '-chip.png')" height="150px" width="150px">
+                      <div class="centered"><h1>{{chip.value}}$</h1></div>
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -65,6 +73,7 @@ export default class InfoDisplay extends Vue {
   
   //getters and setters
   get sortedChips(): Chip[] {
+    this.$store.commit("updateChipValue");
     return this.$store.state.chips.sort((a: Chip, b: Chip) => a.amount < b.amount ? 1:-1);
   }
 
@@ -101,6 +110,9 @@ export default class InfoDisplay extends Vue {
   
     if(totalValue < stackValue){
       console.log("The process ends here. We can take the playerstack we have and keep it.");
+      playerStack.forEach((item) =>{
+        toRemove.push(0);
+      })
     }
     else{
       console.log("Time to do more fun stuff!");
@@ -136,7 +148,7 @@ export default class InfoDisplay extends Vue {
     for(let i = 0; i < playerStack.length; i++){
       playerStack[i] -= toRemove[i];
 
-      let temp: any = {amount: playerStack[i], color: this.sortedChips[i].color};
+      let temp: any = {amount: playerStack[i], color: this.sortedChips[i].color, value: chipValues[i]};
       this.stack.push(temp);
     }
     console.log("New stack is: ", this.stack);
@@ -156,5 +168,15 @@ export default class InfoDisplay extends Vue {
 </script>
 
 <style lang="scss">
-
+  .imagebox {
+    position: relative;
+    text-align: center;
+    color: white;
+  }
+  .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 </style>

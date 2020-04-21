@@ -6,7 +6,14 @@
 
         <b-row id="chip-display">
           <b-col v-for="(chip, index) in chips" :key="index" :index="index">
-            <img :src="getImgUrl(chip.color + '-chip.png')" height="150px" width="150px">
+            <div v-if="chip.color.substring(0, 5) === 'white'" class="imagebox-b">
+              <img :src="getImgUrl(chip.color + '-chip.png')" height="150px" width="150px">
+              <div class="centered"><h1>{{chip.value}}$</h1></div>
+            </div>
+            <div v-else class="imagebox">
+              <img :src="getImgUrl(chip.color + '-chip.png')" height="150px" width="150px">
+              <div class="centered"><h1>{{chip.value}}$</h1></div>
+            </div>
           </b-col>
         </b-row>
         <br>
@@ -139,5 +146,20 @@ export default class GamePage extends Vue {
 </script>
 
 <style lang="scss">
-
+  .imagebox {
+    position: relative;
+    text-align: center;
+    color: white;
+  }
+  .imagebox-b {
+    position: relative;
+    text-align: center;
+    color: black;
+  }
+  .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 </style>
