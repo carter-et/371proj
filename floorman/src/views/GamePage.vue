@@ -123,7 +123,7 @@ import { Component, Vue, Prop } from 'vue-property-decorator';
 import Chip from '../types/chips';
 import bb from '../components/bb.vue'
 import sb from '../components/sb.vue'
-Vue.filter("addZero", (value) => {
+Vue.filter("addZero", (value: String) => {
   console.log(value);
   let num = Number(value);
   console.log("num: ", num)

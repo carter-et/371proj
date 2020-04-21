@@ -60,9 +60,14 @@ export default new Vuex.Store({
         }
       });
     },
+    setState(state, newState: any){
+      state.players = newState.players;
+      state.chips = newState.chips;
+      state.timePerPerson = newState.timePerPerson;
+    },
     updateChipValue: (state) => {
       let chipValues: number[] = [1, 5, 10, 50, 100, 500, 1000, 5000, 10000, 50000, 100000, 500000, 1000000];
-      let sortedChips = state.chips.sort((a: Chip, b: Chip) => a.amount < b.amount ? 1:-1);
+      let sortedChips = state.chips.sort((a: Chip, b: Chip) => a.amount > b.amount ? 1:-1);
 
       let index: number = 0;
       sortedChips.forEach((chip)=>{

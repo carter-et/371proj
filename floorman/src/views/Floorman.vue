@@ -30,12 +30,15 @@
         <thead>
           <tr>
             <th>Colors</th>
+            <th>Total Chips</th>
             <th>Players</th>
             <th>Speed</th>
           </tr>
         </thead>
         <tbody>
         </tbody>
+        json test:
+        {{ json }}
       </table>
     </b-modal>
     </b-container>
@@ -44,8 +47,24 @@
 
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator'
+import axios from 'axios'
 @Component
 export default class Floorman extends Vue {
+  private json: any;
+  private url: string = "http://localhost:5000/";
+
+  private getAPI(){
+    axios
+      .get(this.url).then(response => {
+        console.log("response: ", response)
+        this.json = response.data;
+      });
+  }
+
+  private mounted(){
+    this.getAPI();
+    console.log("data: ", this.json)
+  }
 }
 </script>
 

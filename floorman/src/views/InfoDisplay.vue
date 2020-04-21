@@ -74,7 +74,7 @@ export default class InfoDisplay extends Vue {
   //getters and setters
   get sortedChips(): Chip[] {
     this.$store.commit("updateChipValue");
-    return this.$store.state.chips.sort((a: Chip, b: Chip) => a.amount < b.amount ? 1:-1);
+    return this.$store.state.chips.sort((a: Chip, b: Chip) => a.amount > b.amount ? 1:-1);
   }
 
   get players(): number {
