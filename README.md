@@ -1,6 +1,7 @@
 # 371proj - Floorman
 
 ## Version 1.0 (1.1 incoming with UI updates and bug fixes)
+## Currently hosted at: https://poker-floorman.herokuapp.com/
 
 ## Description
 
