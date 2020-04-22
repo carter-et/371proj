@@ -20,7 +20,7 @@ Enjoy!
 The UI was done with Bootsrap-Vue, a subset of Bootstrap written as Vue components to interact nicely with VueJS.
 
 ### Home
-![home](home.png?raw=true "home")
+![home](home.png)
 ![home-presets](home-presets.png)
 
 ### Setup!
