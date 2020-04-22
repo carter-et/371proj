@@ -49,6 +49,7 @@ The UI was done with Bootsrap-Vue, a subset of Bootstrap written as Vue componen
 2. It's a simple python server running Flask, with only one method right now.
 3. On a GET request, it fetches it's internal data and sends it. No restrictions. If you want it, you got it. It does not handle POSTS or anything else besides an incoming GET.
 4. If you would like to pull the presets off of it as well, the url is: https://floorman-api.herokuapp.com/
+5. The github repo for the API is here: https://github.com/carter-et/floormanAPI
 
 ## Bug List
 - The form is not checked for invalid inputs
