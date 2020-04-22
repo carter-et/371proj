@@ -23,7 +23,7 @@ The UI was done with Bootsrap-Vue, a subset of Bootstrap written as Vue componen
 ![home](home.PNG)
 ![home-presets](home-presets.PNG)
 
-### Setup!
+### Setup
 ![setup](setup.PNG)
 ![setup-chips](setup-chips.PNG)
 
