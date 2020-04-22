@@ -20,18 +20,18 @@ Enjoy!
 The UI was done with Bootsrap-Vue, a subset of Bootstrap written as Vue components to interact nicely with VueJS.
 
 ### Home
-![home](./blob/master/screenshots/home.png?raw=true "home")
-![home-presets](./screenshots/home-presets.png)
+![home](home.png?raw=true "home")
+![home-presets](home-presets.png)
 
 ### Setup!
-![setup](./screenshots/setup.png)
-![setup-chips](./screenshots/setup-chips.png)
+![setup](setup.png)
+![setup-chips](setup-chips.png)
 
 ### Info
-![info](./screenshots/info.png)
+![info](info.png)
 
 ### Game
-![game](./screenshots/game.png)
+![game](game.png)
 
 ## Functions
 - Enter chips, players and speed.
