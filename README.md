@@ -50,7 +50,7 @@ The UI was done with Bootsrap-Vue, a subset of Bootstrap written as Vue componen
 4. If you would like to pull the presets off of it as well, the url is: https://floorman-api.herokuapp.com/
 
 ## Bug List
--The form is not checked for invalid inputs
+- The form is not checked for invalid inputs
 - The player does not get good feedback if there can be no chips handed out at stacks
 - The player does not get notified if the stacks are under 100$
 - The UI is kind of unusable at times when the screen size gets really, really small (iPhone 5/SE)
