@@ -1,6 +1,13 @@
 # 371proj - Floorman
 
-## Version 1.0 (1.1 incoming with UI updates and bug fixes)
+## Version 1.1 (1.2 incoming with Form updates and bug fixes)
+### Patch Notes 1.1
+
+- Added a footer and links
+- Added logo
+- Updated some form UI
+- Fixed bug where selection only triggered on an image click
+
 ## Currently hosted at: https://poker-floorman.herokuapp.com/
 
 ## Description
