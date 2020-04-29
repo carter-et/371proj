@@ -13,7 +13,7 @@
                     <th>Color</th>
                     <th>Quantity</th>
                     <!-- This last one is where we can choose to remove it if we don't like it -->
-                    <th><div></div></th>
+                    <th><div style="padding: 15px">&nbsp;</div></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -38,11 +38,19 @@
             </div>
             <br>
             <div id="form-speed">
-              <b-form-group label="Choose game speed: ">
-                <b-form-radio v-model="timePerPerson" name="blitz" value=10>Blitz</b-form-radio>
-                <b-form-radio v-model="timePerPerson" name="blitz" value=15>Normal</b-form-radio>
-                <b-form-radio v-model="timePerPerson" name="blitz" value=25>Long</b-form-radio>
-              </b-form-group>
+              <b-container >
+                <b-form-group label="">
+                  <b-button :pressed="isTpp(10)" block variant="outline-primary" @click="setTpp(10)">
+                    <b-icon icon="lightning"></b-icon> Blitz
+                  </b-button>
+                  <b-button :pressed="isTpp(15)" block variant="outline-primary" @click="setTpp(15)">
+                    <b-icon icon="play"></b-icon> Normal 
+                  </b-button>
+                  <b-button :pressed="isTpp(25)" block variant="outline-primary" @click="setTpp(25)">
+                    <b-icon icon="clock"></b-icon> Long
+                  </b-button>
+                </b-form-group>
+              </b-container>
             </div>
           </b-container>
         </b-col>
@@ -53,8 +61,8 @@
         </b-col>
         <b-col align-v="end">
           <b-button class="float-right" variant="primary" href="/info">
-              Next  
-              <b-icon icon="box-arrow-in-right"></b-icon>
+            Next  
+            <b-icon icon="box-arrow-in-right"></b-icon>
           </b-button>
         </b-col>
       </b-row>
@@ -72,6 +80,8 @@ import chipFormRow from '../components/chipFormRow.vue';
   }
 })
 export default class SetupForm extends Vue {
+  private tPP: number = 0;
+
   private options = [
     {value: 2, text: "2"},
     {value: 3, text: "3"},
@@ -81,6 +91,15 @@ export default class SetupForm extends Vue {
     {value: 7, text: "7"},
     {value: 8, text: "8"},
   ];
+
+  private isTpp(val: number){
+    return val === this.tPP;
+  }
+
+  private setTpp(val: number){
+    this.tPP = val;
+    this.$store.commit("timePerPerson", val);
+  }
 
   private addChip(){
     this.$store.commit("addChip");
@@ -100,8 +119,8 @@ export default class SetupForm extends Vue {
     return this.$store.state.timePerPerson;
   }
 
-  set timePerPerson(value) {
-    this.$store.commit("timePerPerson", value);
+  private mounted(){
+    this.tPP = this.$store.state.timePerPerson;
   }
 
   get chips(): Chip[] {
@@ -113,5 +132,7 @@ export default class SetupForm extends Vue {
 </script>
 
 <style lang="scss">
-
+  #form-speed{
+    text-align: left;
+  }
 </style>

@@ -18,7 +18,7 @@
                 </thead>
                 <tbody>
                   <tr v-for="(chip, index) in stack" :key="index" :index="index">
-                    <td><h1><b>{{chip.amount}}</b></h1></td>
+                    <td class="amount"><h1 class="centered"><b>{{chip.amount}}</b></h1></td>
 
                     <td v-if="chip.color.substring(0, 5) === 'white'" class="imagebox-b">
                       <img :src="getImgUrl(chip.color + '-chip.png')" height="150px" width="150px">
@@ -174,6 +174,10 @@ export default class InfoDisplay extends Vue {
     position: relative;
     text-align: center;
     color: white;
+  }
+  .amount {
+    position: relative;
+    text-align: center;
   }
   .centered {
     position: absolute;

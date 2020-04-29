@@ -75,39 +75,39 @@
           </b-col>
         </b-row>
 
-        <b-row id="blind-info">
+        <b-row id="blind-info" class="blinds">
           <b-col>
 
             <b-row id="blind-titles">
               <b-col>
-                <h2>Prev Blinds</h2>
+                Prev Blinds
               </b-col>
               <b-col>
-                <h1>Blinds</h1>
+                Blinds
               </b-col>
               <b-col>
-                <h2>Next Blinds</h2>
+                Next Blinds
               </b-col>
             </b-row>
 
             <b-row id="blind-values">
               <b-col>
-                <h2>
+                
                   ${{ getBlinds(gameState-1).sb }}|
                   ${{ getBlinds(gameState-1).bb }}
-                </h2>
+                
               </b-col>
               <b-col>
-                <h1>
+                
                   ${{ getBlinds(gameState).sb }}|
                   ${{ getBlinds(gameState).bb }}
-                </h1>
+                
               </b-col>
               <b-col>
-                <h2>
+                
                   ${{ getBlinds(gameState+1).sb }}|
                   ${{ getBlinds(gameState+1).bb }}
-                </h2>
+                
               </b-col>
             </b-row>
 
@@ -274,6 +274,8 @@ export default class GamePage extends Vue {
   .imagebox-b {
     position: relative;
     text-align: center;
+    margin: 5px;
+    padding: 5px;
     color: black;
   }
   .centered {
@@ -281,5 +283,11 @@ export default class GamePage extends Vue {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+  }
+  #blind-titles{
+    font: bold;
+  }
+  .blinds{
+    font-size: 1.4em;
   }
 </style>

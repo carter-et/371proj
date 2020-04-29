@@ -9,8 +9,8 @@
                         <span class="sr-only">Search</span>
                     </template>
                         
-                    <b-dropdown-item-button v-for="(option, chipIndex) in chipOptions" :key="chipIndex">
-                        <img :src="getImgUrl(option.link)" height="30px" width="30px" @click="chooseChip(chipIndex)">
+                    <b-dropdown-item-button v-for="(option, chipIndex) in chipOptions" :key="chipIndex" @click="chooseChip(chipIndex), saveChip()">
+                        <img :src="getImgUrl(option.link)" height="30px" width="30px" >
                         {{option.text}} Chip
                     </b-dropdown-item-button>
               </b-dropdown>
@@ -19,13 +19,13 @@
         <!-- Possibly abstract this out with the whole component? -->
         <td>
             <div class="amount-input">
-                <b-form-input type="number" v-model="amount"/>
+                <b-form-input type="number" v-model="amount" v-on:keyup.enter="saveChip"/>
             </div>
         </td>
         <td>
             <b-button-group>
                 <b-button variant="outline-primary" @click="saveChip()"><b-icon icon="check"></b-icon></b-button>
-                <b-button variant="outline-danger" @click="removeChip()"><b-icon icon="trash"></b-icon></b-button>
+                <b-button variant="outline-danger" @click="removeChip()"><b-icon icon="x"></b-icon></b-button>
             </b-button-group>
         </td>
     </tr>

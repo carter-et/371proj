@@ -8,12 +8,12 @@
                         <template>
                             <b-icon icon="box-arrow-in-left"></b-icon>
                         </template>
-                        Go Back
+                        Back
                     </b-button>
                 </b-navbar-nav>
 
                 <b-navbar-brand class="ml-auto" align-v="center" href="/">
-                    Floorman
+                    <img :src="getImgUrl('floormanlogo_white.png')" height="60px" width="60px" >
                 </b-navbar-brand>
 
                 <!-- Right aligned nav items -->
@@ -36,7 +36,10 @@
 import { Component, Vue, Prop } from 'vue-property-decorator';
 @Component
 export default class fmNav extends Vue{
-    
+    private getImgUrl(pic: String) {
+        // This is super sketch.
+        return require('../../public/assets/' + pic)
+    }
 }
 </script>
 

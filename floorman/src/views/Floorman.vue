@@ -3,7 +3,10 @@
     <br>
     <b-container>
       <br>
-      <b-jumbotron header="Floorman">
+      <b-jumbotron>
+        <div class="">
+          <img :src="getImgUrl('floormanlogo.png')" height="160px" width="160px" >
+        </div>
         <br>
         <b-row>
           <b-col>
@@ -64,6 +67,11 @@ import Chip from '../types/chips'
 export default class Floorman extends Vue {
   private serverData: any = null;
   private url: string = "http://localhost:5000/";
+
+  private getImgUrl(pic: String) {
+        // This is super sketch.
+        return require('../../public/assets/' + pic)
+    }
 
   private choose(index: number){
     console.log("Setting current set to preset: ", index);
