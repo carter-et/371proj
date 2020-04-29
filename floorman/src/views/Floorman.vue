@@ -66,7 +66,7 @@ import Chip from '../types/chips'
 @Component
 export default class Floorman extends Vue {
   private serverData: any = null;
-  private url: string = "http://localhost:5000/";
+  private url: string = "https://floorman-api.herokuapp.com/";
 
   private getImgUrl(pic: String) {
         // This is super sketch.
